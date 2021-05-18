@@ -1,27 +1,23 @@
 #pragma once
 
 int fibonacci_iterative(int sequence) {
-    if (sequence == 0 ) {
-	    return 0;
-    }else if (sequence == 1) {
-	    return 1;
-    }else {    
-    	int x = 0, y = 1, z = 0;
-   	for(int i = 0 ; i < sequence-1 ; i++){
-	  	  z = x + y;
-	  	  x = y;
-	  	  y = z;
-    	}
-    	return z;
-    }
+    if (sequence < 2)
+	    return sequence;
+       
+    int x = 0; 
+    int	y = 1;
+    for(int i = 0 ; i < sequence-1 ; i++){
+ 	  y = y + x;
+ 	  x = y - x;
+   	}
+    
+    return y;
+    
  }
 
 int fibonacci_recursive(int sequence) {
-    if(sequence == 0 ) {
-        return 0;
-    }else if(sequence == 1){
-        return 1;
-    }else {
-        return fibonacci_recursive(sequence-1)+fibonacci_recursive(sequence-2);
+    if(sequence < 2 ) {
+        return sequence;
     }
+        return fibonacci_recursive(sequence - 1) + fibonacci_recursive(sequence - 2);   
 }
