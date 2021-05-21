@@ -1,13 +1,14 @@
 #pragma once
 #include <vector>
 #include <limits>
-#include <algorithm>
+
 
 int maxOfVector(const std::vector<int>& vec) {
 		
-    int max = vec.front();
+    int max = std::numeric_limits<int>::min();
+
     for(auto const &el : vec) { 
-	max = (max >= el) ? max : el;
+	max = (max < el) ? el : max;
     }
 
     return max;
