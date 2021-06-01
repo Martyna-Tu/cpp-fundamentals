@@ -21,19 +21,19 @@ bool doPasswordsMatch(std::string str1, std::string str2){
  
 ErrorCode checkPasswordRules(std::string str){
 
-    if(str.size() < 9){
+    if (str.size() < 9){
         return static_cast<ErrorCode>(1);
     }
 
-    if(std::none_of(str.cbegin(), str.cend(), [](unsigned char c){ return std::isdigit(c);})){
+    if (std::none_of(str.cbegin(), str.cend(), [](unsigned char c){ return std::isdigit(c);})){
         return static_cast<ErrorCode>(2);
     }
     
-    if(std::all_of(str.cbegin(), str.cend(), [](unsigned char c){ return std::isalnum(c);})){
+    if (std::all_of(str.cbegin(), str.cend(), [](unsigned char c){ return std::isalnum(c);})){
         return static_cast<ErrorCode>(3);
     }
 
-    if(std::none_of(str.cbegin(), str.cend(), [](unsigned char c){ return std::isupper(c);})){
+    if (std::none_of(str.cbegin(), str.cend(), [](unsigned char c){ return std::isupper(c);})){
         return static_cast<ErrorCode>(4);
     }
 
@@ -42,7 +42,7 @@ ErrorCode checkPasswordRules(std::string str){
 
 ErrorCode checkPassword(std::string str1, std::string str2){
 
-    if(!doPasswordsMatch(str1, str2)){
+    if( !doPasswordsMatch(str1, str2)){
         return ErrorCode::PasswordsDoNotMatch;
     }
 
